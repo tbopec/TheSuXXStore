@@ -14,11 +14,14 @@
  *
  */
 
-class SuxxErrorController extends SuxxController {
+class SuxxLogoutController extends SuxxController
+{
+    public function execute(SuxxRequest $request, SuxxResponse $response)
+    {
+        $_SESSION['user'] = null;
+        setcookie('SuxxUser', null, time(), '/');
+        header('Location: /suxx/home', 302);
+        exit();
+    }
 
-   public function execute(SuxxRequest $request, SuxxResponse $response) {
-       $response->trace = debug_backtrace();
-       $response->error = 'An Error occurred:';
-       return new SuxxErrorView();
-   }
 }

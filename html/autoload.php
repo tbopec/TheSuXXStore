@@ -14,6 +14,7 @@ spl_autoload_register(
             'suxxfrontcontroller' => '/classes/front.php',
             'suxxhomecontroller' => '/controller/homecontroller.php',
             'suxxlogincontroller' => '/controller/logincontroller.php',
+            'suxxlogoutcontroller' => '/controller/logoutcontroller.php',
             'suxxproductcontroller' => '/controller/productcontroller.php',
             'suxxregistercontroller' => '/controller/registercontroller.php',
             'suxxrequest' => '/classes/request.php',

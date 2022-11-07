@@ -16,7 +16,10 @@
 
 error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors',1);
-define('DSN', 'mysql://root@127.0.0.1/suxx');
+define('DSN', 'mysql://root:root@mysql/suxx');
+
+$url = parse_url($_SERVER['REQUEST_URI']);
+$controller = explode('/', $url['path'])[2] ?? 'home';
 
 require __DIR__ . '/autoload.php';
 session_start();
@@ -26,6 +29,6 @@ $response = new SuxxResponse();
 $factory  = new SuxxFactory();
 
 $suxx = new SuxxFrontController($request, $response, $factory);
-$view   = $suxx->execute(isset($_GET["controller"]) ? $_GET['controller'] : 'home');
+$view   = $suxx->execute($controller);
 
 echo $view->render($request, $response);

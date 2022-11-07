@@ -19,11 +19,12 @@ class SuxxRegisterController extends SuxxController {
    public function execute(SuxxRequest $request, SuxxResponse $response) {
       $db = $this->factory->getDatabase(DSN);
       $res = $db->query(
-         'insert into user (USERNAME,PASSWD,EMAIL,NAME) values ("%s","%s","%s","%s")',
+         'insert into user (USERNAME,PASSWD,EMAIL,NAME, DESCR, PICTURE) values ("%s","%s","%s","%s","%s","")',
          $request->getValue('username'),
          $request->getValue('passwd'),
          $request->getValue('email'),
-         $request->getValue('name')
+         $request->getValue('name'),
+         $request->getValue('description')
          );
       $msg   = 'Welcome '.$request->getValue('name') . "\n";
       $msg  .= 'Your Login: '.$request->getValue('username') . "\n";

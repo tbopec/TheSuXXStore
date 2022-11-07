@@ -33,7 +33,7 @@ class SuxxLoginController extends SuxxController {
          setcookie('SuxxUser', serialize($_SESSION['user']),time()+60*60*24*31, '/');
       }
       header('Location: /suxx/home',302);
-      die();
+      exit();
    }
 
 }
